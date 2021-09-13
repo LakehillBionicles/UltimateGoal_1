@@ -1,0 +1,109 @@
+package org.firstinspires.ftc.teamcode.TeleOp;
+
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.VhisolaHardware;
+
+
+@TeleOp
+
+//@Disabled
+
+public class VhisolaOp extends LinearOpMode {
+
+    VhisolaHardware robot =  new VhisolaHardware();
+
+    //private double power = .5;
+
+    @Override
+    public void runOpMode(){
+
+        robot.init(hardwareMap);
+
+          //ALREADY IN HWMAP????
+        robot.fpd.setDirection(DcMotorSimple.Direction.FORWARD);
+        robot.bpd.setDirection(DcMotorSimple.Direction.FORWARD);
+        robot.fsd.setDirection(DcMotorSimple.Direction.REVERSE);
+        robot.bsd.setDirection(DcMotorSimple.Direction.REVERSE);
+
+
+        robot.fpd.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.bpd.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.fsd.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.bsd.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+
+        //robot.bpd.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //robot.bsd.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        telemetry.addData("Status:", "Run time dudes");
+        telemetry.update();
+
+        waitForStart();
+          while(opModeIsActive()){
+
+            drive();
+            }
+
+public void drive(){
+
+if(gamepad1.y)    //bow
+robot.fpd.setpower(.9);
+robot.bpd.setpower(.9);
+robot.fsd.setpower(.9);
+robot.bsd.setpower(.9);
+
+if(gamepad1.x)    //starboard
+robot.fpd.setpower(.9);
+robot.bpd.setpower(-.9);
+robot.fsd.setpower(-.9);
+robot.bsd.setpower(.9);
+
+
+if(gamepad1.b)     //port
+robot.fpd.setpower(-.9);
+robot.bpd.setpower(.9);
+robot.fsd.setpower(.9);
+robot.bsd.setpower(-.9);
+
+
+if(gamepad1.a)       //stern
+robot.fpd.setpower(-.9);
+robot.bpd.setpower(.9);
+robot.fsd.setpower(.9);
+robot.bsd.setpower(-.9);
+
+
+else if(gamepad1.y && gamepad1.x)       //bow+port
+robot.fpd.setpower(0);
+robot.bpd.setpower(.9);
+robot.fsd.setpower(.9);
+robot.bsd.setpower(0);
+
+
+else if(gamepad1.x && gamepad1.b)       //bow+starboard
+robot.fpd.setpower(.9);
+robot.bpd.setpower(0);
+robot.fsd.setpower(0);
+robot.bsd.setpower(.9);
+
+
+else if(gamepad1.a && gamepad1.x)       //stern+port
+robot.fpd.setpower(0);
+robot.bpd.setpower(-.9);
+robot.fsd.setpower(-.9);
+robot.bsd.setpower(0);
+
+
+else if(gamepad1.a && gamepad1.b)       //stern+starboard
+robot.fpd.setpower(-.9);
+robot.bpd.setpower(0);
+robot.fsd.setpower(0);
+robot.bsd.setpower(-.9);
+
+}}}
