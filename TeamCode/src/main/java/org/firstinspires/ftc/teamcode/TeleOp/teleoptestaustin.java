@@ -99,7 +99,7 @@ public class VhisolaOp extends LinearOpMode {
 
            telemetry.addData("port","");
           
-       } else if ((gamepad1.right_stick_x < -0.5 && gamepad1.right_stick_y < -0.5) ) {  //dianganol front right
+       } else if ((gamepad1.right_stick_x < -0.5 && gamepad1.right_stick_y < -0.5) ) {  //dianganol front left
 
            robot.fsd.setPower((gamepad1.right_stick_x+gamepad1.right_stick_y)/2);
            robot.bpd.setPower((gamepad1.right_stick_x+gamepad1.right_stick_y)/2);
@@ -111,3 +111,17 @@ public class VhisolaOp extends LinearOpMode {
            robot.bsd.setPower((gamepad1.right_stick_x+gamepad1.right_stick_y)/2);
            
            telemetry.addData("port","");
+        } else if ((gamepad1.right_stick_x < -0.5 && gamepad1.right_stick_y < 0.5) ) {  //dianganol back right
+
+           robot.fsd.setPower((-gamepad1.right_stick_x+gamepad1.right_stick_y)/2);
+           robot.bpd.setPower((-gamepad1.right_stick_x+gamepad1.right_stick_y)/2);
+           
+           telemetry.addData("port","");
+             } else if ((gamepad1.right_stick_x < 0.5 && gamepad1.right_stick_y < 0.5) ) {  //dianganol back left
+
+           robot.fpd.setPower((-gamepad1.right_stick_x+gamepad1.right_stick_y)/2);
+           robot.bsd.setPower((-gamepad1.right_stick_x+gamepad1.right_stick_y)/2);
+           
+           telemetry.addData("port","");
+           
+           
