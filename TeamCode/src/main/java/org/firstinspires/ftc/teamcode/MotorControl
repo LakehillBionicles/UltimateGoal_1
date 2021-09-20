@@ -1,0 +1,73 @@
+  @Teleop
+
+  //@Disabled
+
+  public class MotorControl extends LinearOpMode  {
+
+    public DcMotor testMotor1 = null;
+    public DcMotor testMotor2 = null;
+    public DcMotor testMotor3 = null;
+    public DcMotor testMotor4 = null;
+    public static final double testMotorSpeed = 1.0;
+
+ public void runOpMode(){
+
+        telemetry.addData("Status:", "Run");
+        telemetry.update();
+
+        waitForStart();
+
+
+        while(opModeIsActive()){
+
+            testMotor();
+
+
+
+        }
+
+    }
+
+  
+  
+  
+  public void testMotor(){
+
+          if(gamepad1.y != 0){                                 //positive??
+            testMotor1.setPower(testMotorSpeed);
+        } else (gamepad1.y = 0){
+          testMotor1.setPower(0.0);
+        }
+
+        if(gamepad1.b != 0){                                 //positive??
+            testMotor1.setPower(testMotorSpeed);
+        } else (gamepad1.b = 0){
+          testMotor1.setPower(0.0);
+        }
+
+        if(gamepad1.a != 0){                                 //negative??
+            testMotor1.setPower(-(testMotorSpeed));
+        } else (gamepad1.a = 0){
+          testMotor1.setPower(0.0);
+        }
+
+        if(gamepad1.x != 0){                                 //negative??
+            testMotor1.setPower(-(testMotorSpeed));
+        } else (gamepad1.x = 0){
+          testMotor1.setPower(0.0);
+        }
+       
+
+    }
+
+  }
+
+  /* need to create a new confif for this
+  plug hub into battery
+  declare port 0 for testMotor1 then should be good to good
+  left trigger = forward (positive hopefully)
+  right trigger = backward (negative hopefully)
+  make sure we don't need to update phone as well
+  
+  
+  */
